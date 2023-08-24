@@ -1,3 +1,3 @@
 class AttendeeSerializer < User
-  attributes :id
+  attribute :id
 end

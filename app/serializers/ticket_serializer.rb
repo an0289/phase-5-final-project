@@ -1,5 +1,5 @@
 class TicketSerializer < ActiveModel::Serializer
-  attributes :id
+  attribute :id
   has_one :user
   has_one :event
 end

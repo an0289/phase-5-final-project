@@ -1,3 +1,3 @@
 class OrganizerSerializer < User
-  attributes :id
+  attribute :id
 end
