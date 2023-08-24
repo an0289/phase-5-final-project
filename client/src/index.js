@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
-// import { UserProvider } from './contexts/UserContext'
-// import { EventProvider } from './contexts/EventContext'
+import { UserProvider } from './contexts/UserContext'
+import { EventProvider } from './contexts/EventContext';
 import { BrowserRouter } from "react-router-dom"
 import './index.css';
 import App from './components/App';
@@ -10,11 +10,7 @@ import reportWebVitals from './reportWebVitals';
 const root = createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
-    {/* <UserProvider> */}
-    {/* <EventProvider> */}
       <App />
-    {/* </EventProvider> */}
-    {/* </UserProvider> */}
   </BrowserRouter>
 )
 
