@@ -11,7 +11,11 @@ import reportWebVitals from './reportWebVitals';
 const root = createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
+    <UserProvider>
+    <EventProvider>
       <App />
+    </EventProvider>
+    </UserProvider>
   </BrowserRouter>
 )
 
