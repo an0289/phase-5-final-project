@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     def destroy
         event = find_event 
         event.destroy 
-        head :no_content 
+        render json: event  
     end 
 
     private 

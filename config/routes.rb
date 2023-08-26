@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   
   resources :attendees, only: [:index]
   resources :organizers, only: [:index]
-  resources :tickets, only: [:index]
+  resources :tickets, only: [:index, :create, :destroy]
   resources :events, only: [:index]
   get "/me", to: "users#show"
+  post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users, only: [:index]
