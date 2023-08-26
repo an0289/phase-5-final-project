@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :organizers, only: [:index]
   resources :tickets, only: [:index]
   resources :events, only: [:index]
+  get "/me", to: "users#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   resources :users, only: [:index]
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
