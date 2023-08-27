@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Menu, Header, Input, Divider, Search, Container, Grid } from 'semantic-ui-react'
 import { UserContext } from '../contexts/UserContext'
 
+
 function NavBar() {
     const {setUser} = useContext(UserContext)
 
@@ -18,7 +19,7 @@ function NavBar() {
 
     return (
         <div>
-            <Menu tabular vertical floated size='huge' style={{ paddingLeft:15 }}>
+            <Menu tabular vertical floated size='huge' style={{ paddingLeft:15, fontFamily: 'Metal Mania' }}>
                 <Menu.Item as={NavLink} to='/' name='home' />
                 <Menu.Item as={NavLink} to="/my_events" name='My Events' />
                 <Menu.Item as={NavLink} to='/new' name='Create A New Event' />

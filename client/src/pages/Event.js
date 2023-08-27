@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { EventContext } from '../contexts/EventContext'
-import { Grid, Image, Divider, Segment, Button, Card } from 'semantic-ui-react'
+import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
 function Event({ event, id }) {
     const {events, setEvents} = useContext(EventContext)
@@ -20,7 +20,7 @@ function Event({ event, id }) {
                         <Card.Description><b>Description:</b> {event.description}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <Button basic color='violet'>Purchase Ticket</Button>
+                        <Button type='submit' basic color='violet'>Purchase Ticket</Button>
                     </Card.Content>
                 </Card>   
             {/* </Segment> */}
