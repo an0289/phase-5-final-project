@@ -18,7 +18,7 @@ function NavBar() {
 
     return (
         <div>
-            <Menu tabular vertical floated='left' size='huge' style={{ paddingLeft:15 }}>
+            <Menu tabular vertical floated size='huge' style={{ paddingLeft:15 }}>
                 <Menu.Item as={NavLink} to='/' name='home' />
                 <Menu.Item as={NavLink} to="/my_events" name='My Events' />
                 <Menu.Item as={NavLink} to='/new' name='Create A New Event' />

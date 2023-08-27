@@ -7,6 +7,7 @@ import EventList from '../pages/EventList'
 import MyEventList from '../pages/MyEventList'
 import NewEvent from '../pages/NewEvent'
 import { Segment, Header, Divider, Image, Container, Grid } from 'semantic-ui-react'
+import '../index.css'
 
 function App() {
   const {user} = useContext(UserContext)
@@ -18,8 +19,8 @@ function App() {
     <>
     <Segment>
       <Divider hidden />
-      <Header style={{ paddingRight:25 }} textAlign='right' size='huge'>
-        My Eldritch Horrors 
+      <Header style={{ paddingRight:25, fontFamily: 'Metal Mania' }} textAlign='right' size='large'>
+        Eventful Encounters  
       </Header>
       <Divider hidden />
     </Segment>
