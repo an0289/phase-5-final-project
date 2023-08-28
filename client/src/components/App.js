@@ -12,7 +12,7 @@ import { Segment, Header, Divider, Image, Container, Grid } from 'semantic-ui-re
 function App() {
   const {user} = useContext(UserContext)
 
-  if (!user) return <Login />
+  // if (!user) return <Login />
   
 
   return (

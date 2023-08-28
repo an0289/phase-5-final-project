@@ -4,7 +4,12 @@ class UsersController < ApplicationController
     end 
 
     def create
-        user = User.create!(user_params)
+        case params[:type]
+        when 'Attendee'
+            @current_user = Attendee.create!(user_params)
+        when 'Organizer'
+            @current_user = Organizer.create!(user_params)
+        end 
         session[:user_id] = user.id
         render json: user, status: :created 
     end 

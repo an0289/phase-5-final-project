@@ -1,13 +1,19 @@
 import React, { useState, useContext } from 'react'
 import { EventContext } from '../contexts/EventContext'
+import { UserContext } from '../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
 function Event({ event, id }) {
     const {events, setEvents} = useContext(EventContext)
+    const {user, setUser} = useContext(UserContext)
     
+    function purchaseTicket(newTicket) {
+        const updatedUserTickets = [...user]
+    }
+
     return (
         <Grid.Column stretched>
-            {/* <Segment> */}
              <Image src={event.image_url} />
                 <Card raised fluid color='black'>
                     <Card.Content>
@@ -23,7 +29,6 @@ function Event({ event, id }) {
                         <Button type='submit' basic color='violet'>Purchase Ticket</Button>
                     </Card.Content>
                 </Card>   
-            {/* </Segment> */}
             <Divider hidden />
         </Grid.Column>
     )

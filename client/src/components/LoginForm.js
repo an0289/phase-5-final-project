@@ -29,7 +29,7 @@ function LoginForm() {
         <>
         <Divider hidden />
         <Container style={{ paddingLeft:80}}>
-        <Segment style={{ height:240, width:500}} raised>
+        <Segment style={{ height:250, width:500}} raised>
             <Form onSubmit={handleSubmit}>
                 <Header style={{ fontFamily: 'Metal Mania' }} textAlign='center' as='h3'>Login Page</Header>
                     <Form.Field>
@@ -57,7 +57,7 @@ function LoginForm() {
                             <Label key={err}>{err}</Label>
                         ))}
                     </Form.Field>
-                <Button basic color='black' type='submit'>Login</Button>
+                <Button floated='right' basic color='black' type='submit'>Login</Button>
             </Form>
         </Segment>
         </Container>
