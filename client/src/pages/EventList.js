@@ -10,7 +10,7 @@ function EventList() {
         <Grid columns={3} > 
             <Grid.Row>
                 {events.map((event => (
-                    <Event key={event.id} id={event.id} event={event} />
+                    <Event key={event.id} eventId={event.id} event={event} />
                 )))}
             </Grid.Row>
         </Grid>

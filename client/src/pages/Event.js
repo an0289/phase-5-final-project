@@ -5,14 +5,15 @@ import { UserContext } from '../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
-function Event({ event, id }) {
+function Event({ eventId, event }) {
     const {events, setEvents} = useContext(EventContext)
-    const {user, setUser} = useContext(UserContext)
+    const {attendee, setAttendee} = useContext(AttendeeContext)
+    const [errors, setErrors] = useState([])
     
-    function purchaseTicket(newTicket) {
-        const updatedUserTickets = [...user.tickets, newTicket]
-        const updatedUser = {...user, tickets: updatedUserTickets}
-        setUser(updatedUser)
+    function handlePurchaseTicket(newTicket) {
+        const updatedAttendeeTickets = [...attendee.tickets, newTicket]
+        const updatedAttendee = {...attendee, tickets: updatedAttendeeTickets}
+        setAttendee(updatedAttendee)
 
         const updatedEvents = events.map((event) => {
             if(event.id === newTicket.event_id) {
@@ -27,7 +28,21 @@ function Event({ event, id }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("/tickets")
+        fetch("/tickets", {
+            method: "POST", 
+            headers: {
+                "Context-Type": "application/json", 
+            },
+            body: JSON.stringify({
+                event_id: eventId
+            }),
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((newTicket) => handlePurchaseTicket(newTicket))
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
+        })
     }
 
     return (
@@ -44,7 +59,9 @@ function Event({ event, id }) {
                         <Card.Description><b>Description:</b> {event.description}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <Button type='submit' basic color='violet'>Purchase Ticket</Button>
+                        <Form onSubmit={handleSubmit}>
+                            <Button type='submit' basic color='violet'>Purchase Ticket</Button>
+                        </Form>
                     </Card.Content>
                 </Card>   
             <Divider hidden />

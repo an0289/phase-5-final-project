@@ -17,4 +17,8 @@ class Ticket < ApplicationRecord
   def event_location
     self.event.location
   end
+
+  def event_seats
+    self.event.available_seats
+  end 
 end
