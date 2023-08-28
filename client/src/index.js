@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
 import { UserProvider } from './contexts/UserContext'
+import { OrganizerProvider } from './contexts/OrganizerContext'
+import { AttendeeProvider } from './contexts/AttendeeContext'
 import { EventProvider } from './contexts/EventContext';
 import { BrowserRouter } from "react-router-dom"
 import './index.css';
@@ -12,9 +14,13 @@ const root = createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
     <UserProvider>
+    <OrganizerProvider>
+    <AttendeeProvider>
     <EventProvider>
       <App />
     </EventProvider>
+    </AttendeeProvider>
+    </OrganizerProvider>
     </UserProvider>
   </BrowserRouter>
 )

@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react'
 import { EventContext } from '../contexts/EventContext'
-import { UserContext } from '../contexts/UserContext'
+import { AttendeeContext } from '../contexts/AttendeeContext'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
 function Event({ event, id }) {
     const {events, setEvents} = useContext(EventContext)
-    const {user, setUser} = useContext(UserContext)
+    const {attendee, setAttendee} = useContext(AttendeeContext)
     
     function purchaseTicket(newTicket) {
-        const updatedUserTickets = [...user]
+        const updatedAttendeeTickets = [...attendee]
     }
 
     return (
