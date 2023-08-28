@@ -1,15 +1,33 @@
 import React, { useState, useContext } from 'react'
 import { EventContext } from '../contexts/EventContext'
 import { AttendeeContext } from '../contexts/AttendeeContext'
+import { UserContext } from '../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
 function Event({ event, id }) {
     const {events, setEvents} = useContext(EventContext)
-    const {attendee, setAttendee} = useContext(AttendeeContext)
+    const {user, setUser} = useContext(UserContext)
     
     function purchaseTicket(newTicket) {
-        const updatedAttendeeTickets = [...attendee]
+        const updatedUserTickets = [...user.tickets, newTicket]
+        const updatedUser = {...user, tickets: updatedUserTickets}
+        setUser(updatedUser)
+
+        const updatedEvents = events.map((event) => {
+            if(event.id === newTicket.event_id) {
+               const updatedEventTickets = [...event.tickets, newTicket] 
+               const newEvent = {...event, tickets: updatedEventTickets}
+               return newEvent 
+            }
+            return event 
+        })
+        setEvents(updatedEvents)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        fetch("/tickets")
     }
 
     return (
