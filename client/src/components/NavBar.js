@@ -8,8 +8,9 @@ import { OrganizerContext } from '../contexts/OrganizerContext'
 
 function NavBar() {
     const {user, setUser} = useContext(UserContext)
-    const {attendee} = useContext(AttendeeContext)
-    const {organizer} = useContext(OrganizerContext)
+    const type = user.type 
+    // const {attendee} = useContext(AttendeeContext)
+    // const {organizer} = useContext(OrganizerContext)
 
     // i'm thinking of doing the ternary here to change between organizer vs attendee
 
@@ -23,13 +24,20 @@ function NavBar() {
 
     return (
         <div>
+            {(type === 'Organizer') ? (
+            <Menu tabular vertical floated size='huge' style={{ paddingLeft:15, fontFamily: 'Metal Mania' }}>
+               <Menu.Item as={NavLink} to='/' name='home' />
+               <Menu.Item as={NavLink} to="/my_events" name='My Events' />
+               <Menu.Item as={NavLink} to='/new' name='Create A New Event' />
+               <Menu.Item as={NavLink} onClick={handleLogoutClick} name='logout' />
+            </Menu> 
+            ) : (
             <Menu tabular vertical floated size='huge' style={{ paddingLeft:15, fontFamily: 'Metal Mania' }}>
                 <Menu.Item as={NavLink} to='/' name='home' />
-                <Menu.Item as={NavLink} to="/my_events" name='My Events' />
-                <Menu.Item as={NavLink} to='/new' name='Create A New Event' />
                 <Menu.Item as={NavLink} to='/my_tickets' name='Purchased Tickets' />
                 <Menu.Item as={NavLink} onClick={handleLogoutClick} name='logout' />
             </Menu>
+            )}
         </div>
     )
 }
