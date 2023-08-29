@@ -4,21 +4,23 @@ import { AttendeeContext } from '../contexts/AttendeeContext'
 import { EventContext } from '../contexts/EventContext'
 
 
-function MyTicket(id, ticket) {
+function MyTicket({ id, ticket }) {
     return (
-        <Grid.Column>
-            <Segment>
-            <Item.Group>
-                <Item>
-                    <Header as='h4'>{ticket.event_title}</Header>
-                        <Item.Image size='tiny' src={ticket.event_image} />
-                        <Item.Content>
-                            <Item.Description>{ticket.event_date}</Item.Description>
-                            <Item.Description>{ticket.event_location}</Item.Description>
-                        </Item.Content>
-                </Item>
-            </Item.Group>
-            </Segment>
+        <Grid.Column >
+            <Card.Group>
+                <Card>
+                    <Card.Content>
+                        <Image floated='right' size='tiny' src={ticket.event_image} />
+                        <Card.Header as='a'>{ticket.event_title}</Card.Header>
+                        <Card.Meta><b>Organizer:</b> {ticket.event_organizer}</Card.Meta>
+                        <Card.Description><b>Date:</b> {ticket.event_date}</Card.Description>
+                        <Card.Description><b>Location:</b>{ticket.event_location}</Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <Button basic color='red'>Cancel Ticket</Button>
+                    </Card.Content>
+                </Card>
+            </Card.Group>
             <Divider hidden />
         </Grid.Column>
     )

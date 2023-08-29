@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react'
 import MyTicket from './MyTicket'
 import { Grid, Image, Item, Icon } from 'semantic-ui-react'
-import { UserContext } from '../contexts/UserContext'
+import { AttendeeContext } from '../contexts/AttendeeContext'
 
 function MyTicketList() {
- const {user} = useContext(UserContext)
+ const {attendee} = useContext(AttendeeContext)
 
  return (
-    <Grid columns={3} divided>
+    <Grid columns={3} >
     <Grid.Row>
-        {user.tickets.map((ticket => (
+        {attendee.tickets.map((ticket => (
             <MyTicket key={ticket.id} id={ticket.id} ticket={ticket} />
         )))}
     </Grid.Row>

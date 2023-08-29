@@ -3,6 +3,11 @@ class TicketsController < ApplicationController
         render json: Ticket.all 
     end 
 
+    def show
+        ticket = find_ticket
+        render json: ticket 
+    end 
+
     def create 
         ticket = @current_user.tickets.create!(ticket_params)
         # ticket.event.available_seats -1

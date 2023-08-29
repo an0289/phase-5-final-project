@@ -62,7 +62,7 @@ function Event({ eventId, event }) {
                </Card.Content>
                <Card.Content extra>
                    <Form onSubmit={handleSubmit}>
-                       <Button type='submit' basic color='violet'>Purchase Ticket</Button>
+                       <Button basic color='violet'>Purchase Ticket</Button>
                    </Form>
                </Card.Content>
            </Card>   
