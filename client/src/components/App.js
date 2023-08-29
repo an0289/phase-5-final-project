@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 import Login from '../pages/Login'
 import EventList from '../pages/EventList'
 import MyEventList from '../pages/MyEventList'
+import MyTicketList from '../pages/MyTicketList'
 import NewEvent from '../pages/NewEvent'
 import { Segment, Header, Divider, Image, Container, Grid } from 'semantic-ui-react'
 
@@ -12,7 +13,7 @@ import { Segment, Header, Divider, Image, Container, Grid } from 'semantic-ui-re
 function App() {
   const {user} = useContext(UserContext)
 
-  // if (!user) return <Login />
+  if (!user) return <Login />
   
 
   return (
@@ -36,6 +37,9 @@ function App() {
             />
             <Route path="/my_events"
               element={<MyEventList />}
+            />
+            <Route path="/my_tickets"
+              element={<MyTicketList />}
             />
           </Routes>
         </main>        

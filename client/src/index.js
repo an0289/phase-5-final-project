@@ -4,6 +4,7 @@ import { UserProvider } from './contexts/UserContext'
 import { OrganizerProvider } from './contexts/OrganizerContext'
 import { AttendeeProvider } from './contexts/AttendeeContext'
 import { EventProvider } from './contexts/EventContext';
+import { TicketProvider } from './contexts/TicketContext';
 import { BrowserRouter } from "react-router-dom"
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
@@ -17,7 +18,9 @@ root.render(
     <OrganizerProvider>
     <AttendeeProvider>
     <EventProvider>
+    <TicketProvider>
       <App />
+    </TicketProvider>
     </EventProvider>
     </AttendeeProvider>
     </OrganizerProvider>

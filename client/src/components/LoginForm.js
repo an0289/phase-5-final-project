@@ -52,11 +52,11 @@ function LoginForm() {
                         onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Field>
-                    <Form.Field>
+                    {/* <Form.Field>
                         {errors.map((err) => (
                             <Label key={err}>{err}</Label>
                         ))}
-                    </Form.Field>
+                    </Form.Field> */}
                 <Button floated='right' basic color='black' type='submit'>Login</Button>
             </Form>
         </Segment>

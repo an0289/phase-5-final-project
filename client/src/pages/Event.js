@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { EventContext } from '../contexts/EventContext'
 import { AttendeeContext } from '../contexts/AttendeeContext'
-import { UserContext } from '../contexts/UserContext'
+import { OrganizerContext } from '../contexts/OrganizerContext'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form } from 'semantic-ui-react'
 
 function Event({ eventId, event }) {
     const {events, setEvents} = useContext(EventContext)
     const {attendee, setAttendee} = useContext(AttendeeContext)
+    const {organizer} = useContext(OrganizerContext)
     const [errors, setErrors] = useState([])
     
     function handlePurchaseTicket(newTicket) {
@@ -46,26 +47,28 @@ function Event({ eventId, event }) {
     }
 
     return (
+        <>
         <Grid.Column stretched>
-             <Image src={event.image_url} />
-                <Card raised fluid color='black'>
-                    <Card.Content>
-                        <Card.Header>
-                            {event.title}
-                        </Card.Header>
-                        <Card.Description><b>Location:</b> {event.location}</Card.Description>
-                        <Card.Description><b>Date:</b> {event.date}</Card.Description>
-                        <Card.Description><b>Available Seats:</b> {event.available_seats}</Card.Description>
-                        <Card.Description><b>Description:</b> {event.description}</Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                        <Form onSubmit={handleSubmit}>
-                            <Button type='submit' basic color='violet'>Purchase Ticket</Button>
-                        </Form>
-                    </Card.Content>
-                </Card>   
-            <Divider hidden />
+        <Image src={event.image_url} />
+           <Card raised fluid color='black'>
+               <Card.Content>
+                   <Card.Header>
+                       {event.title}
+                   </Card.Header>
+                   <Card.Description><b>Location:</b> {event.location}</Card.Description>
+                   <Card.Description><b>Date:</b> {event.date}</Card.Description>
+                   <Card.Description><b>Available Seats:</b> {event.available_seats}</Card.Description>
+                   <Card.Description><b>Description:</b> {event.description}</Card.Description>
+               </Card.Content>
+               <Card.Content extra>
+                   <Form onSubmit={handleSubmit}>
+                       <Button type='submit' basic color='violet'>Purchase Ticket</Button>
+                   </Form>
+               </Card.Content>
+           </Card>   
+        <Divider hidden />
         </Grid.Column>
+        </>
     )
 }
 
