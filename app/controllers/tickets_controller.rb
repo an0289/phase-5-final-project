@@ -8,9 +8,8 @@ class TicketsController < ApplicationController
         render json: ticket 
     end 
 
-    def create 
+    def create
         ticket = @current_user.tickets.create!(ticket_params)
-        # ticket.event.available_seats.to_i -1
         render json: ticket, status: :created 
     end 
 
@@ -23,7 +22,7 @@ class TicketsController < ApplicationController
     private 
 
     def ticket_params
-        params.permit(:id)
+        params.permit(:event_id, :user_id)
     end 
 
     def find_ticket

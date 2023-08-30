@@ -1,12 +1,43 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Grid, Image, Item, Icon, Card, Segment, Divider, Header, Button, Form, TextArea, Input, Label } from 'semantic-ui-react'
-import { AttendeeContext } from '../contexts/AttendeeContext'
+import { UserContext } from '../contexts/UserContext'
 import { EventContext } from '../contexts/EventContext'
 
 
 function MyTicket({ id, ticket }) {
+    const {user, setUser} = useContext(UserContext)
+    const {events, setEvents} = useContext(EventContext)
+
+    function handleDeleteTicket(deletedTicket) {
+        const updatedUserTickets = user.tickets.filter((ticket) => ticket.id !== deletedTicket.id)
+        const updatedUser = {...user, tickets: updatedUserTickets}
+        setUser(updatedUser)
+
+        const updatedEvents = events.map((event) => {
+            if(event.id === deletedTicket.event_id) {
+                const updatedTickets = event.tickets.filter((ticket) => ticket.id !== deletedTicket.id)
+                const newEvent = {...event, tickets: updatedTickets}
+                return newEvent
+            }
+                return event 
+        })
+        setEvents(updatedEvents)
+    }
+
+    function handleDeleteClick() {
+        fetch(`/tickets/${id}`, {
+            method: "DELETE"
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((deletedTicket) => handleDeleteTicket(deletedTicket))
+                console.log('deleted')
+            }
+        })
+        console.log('really deleted')
+    }
+    console.log('really, really deleted')
     return (
-        <Grid.Column >
+        <   Grid.Column >
             <Card.Group>
                 <Card>
                     <Card.Content>
@@ -17,7 +48,7 @@ function MyTicket({ id, ticket }) {
                         <Card.Description><b>Location:</b>{ticket.event_location}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <Button basic color='red'>Cancel Ticket</Button>
+                        <Button onClick={handleDeleteClick} basic color='red'>Cancel Ticket</Button>
                     </Card.Content>
                 </Card>
             </Card.Group>

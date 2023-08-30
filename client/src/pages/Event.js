@@ -36,11 +36,12 @@ function Event({ eventId, event }) {
                 "Context-Type": "application/json", 
             },
             body: JSON.stringify({
-                event_id: eventId
+                event_id: event.id
             }),
         }).then((r) => {
             if (r.ok) {
                 r.json().then((newTicket) => handlePurchaseTicket(newTicket))
+                console.log('ticket')
                 navigate("/my_tickets")
             } else {
                 r.json().then((err) => setErrors(err.errors))
