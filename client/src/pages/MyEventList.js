@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import MyEvent from './MyEvent'
 import { Grid } from 'semantic-ui-react'
-import { OrganizerContext } from '../contexts/OrganizerContext'
+import { UserContext } from '../contexts/UserContext'
 
 function MyEventList() {
-    const {organizer} = useContext(OrganizerContext)
+    const {user} = useContext(UserContext)
 
     return (
         <Grid columns={3} >
             <Grid.Row>
-                {organizer.events.map((event => (
+                {user.events.map((event => (
                     <MyEvent originalTitle={event.title} originalDescription={event.description} originalImage={event.image_url} originalDate={event.date} originalLocation={event.location} originalSeats={event.available_seats} key={event.id} id={event.id} event={event} />
                 )))}
             </Grid.Row>
