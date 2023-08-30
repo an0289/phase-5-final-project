@@ -1,28 +1,155 @@
 import React, { useState, useContext } from 'react'
 import { Grid, Image, Item, Icon, Card, Segment, Divider, Header, Button, Form, TextArea, Input, Label } from 'semantic-ui-react'
-import { OrganizerContext } from '../contexts/OrganizerContext'
+import { UserContext } from '../contexts/UserContext'
 import { EventContext } from '../contexts/EventContext'
 
 function MyEvent({ event, id, originalTitle, originalDescription, originalLocation, originalImage, originalDate, originalSeats }) {
-    const {organizer, setOrganizer} = useContext(OrganizerContext)
+    const {user, setUser} = useContext(UserContext)
     const {events, setEvents} = useContext(EventContext)
+    const [isEdit, setIsEdit] = useState(false)
+    const [title, setTitle] = useState(originalTitle)
+    const [description, setDescription] = useState(originalDescription)
+    const [date, setDate] = useState(originalDate)
+    const [location, setLocation] = useState(originalLocation)
+    const [errors, setErrors] = useState([])
+
+    function handleUpdateEvent(updatedEvent) {
+        const updatedUserEvents = user.events.map((event) => event.id === updatedEvent.id ? updatedEvent : event)
+        const updatedUser = { ...user, events: updatedUserEvents}
+        setUser(updatedUser)
+
+        const updatedEvents = events.map((event) => {
+            if(event.id === updatedEvent.id) {
+                return updatedEvent
+            }
+            return event 
+        })
+        setEvents(updatedEvents)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        setIsEdit(false)
+        fetch(`/events/${id}`, {
+            method: "PATCH", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title, 
+                description, 
+                date,
+                location
+            })
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((updatedEvent) => handleUpdateEvent(updatedEvent))
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
+        })
+    }
+
+    function handleDeleteEvent(deletedEvent) {
+        const updatedUserEvents = user.events.filter((event) => event.id !== deletedEvent.id)
+        const updatedUser = {...user, events: updatedUserEvents}
+        setUser(updatedUser)
+
+        const updatedEvents = events.filter((event) => event.id !== id)
+        setEvents(updatedEvents)
+    }
+
+    function handleDeleteClick() {
+        fetch(`/events/${id}`, {
+            method: "DELETE"
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((deletedEvent) => handleDeleteEvent(deletedEvent))
+            }
+        })
+    }
 
     return (
       <Grid.Column>
-        <Segment>
-        <Item.Group>
-            <Item>
-            <Header as='h4'>{event.title}</Header>
-                <Item.Image src={event.image_url} />
-                <Item.Content>
-                    <Item.Description>{event.Description}</Item.Description>
-                    <Item.Description>{event.Date}</Item.Description>
-                    <Item.Description>{event.Location}</Item.Description>
-                    <Item.Description>{event.available_seats}</Item.Description>
-                </Item.Content>
-            </Item>
-        </Item.Group>
-        </Segment>
+        {isEdit ? (
+        <Card.Group>
+        <Card>
+            <Card.Content>
+                <Image floated='left' size='small' src={event.image_url} />
+                <Form onSubmit={handleSubmit}>
+                <Form.Field>
+                    <label>Event Title</label>
+                    <input
+                    type='text'
+                    name='title'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Event Description</label>
+                    <textarea
+                    type='text'
+                    name='description'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Event Location</label>
+                    <input
+                    type='text'
+                    name='location'
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Event Date (YYYY-MM-DD)</label>
+                    <input
+                    type='text'
+                    name='date'
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    {errors.map((err) => (
+                        <Label key={err}>{err}</Label>
+                    ))}
+                </Form.Field>
+                <Form.Field>
+                <Button.Group >
+                    <Button type='submit' color='violet'>Submit Edit</Button>
+                    <Button.Or />
+                    <Button onClick={() => setIsEdit(false)} color='black'>Cancel Edit</Button>
+                </Button.Group>
+                </Form.Field>
+            </Form>    
+            </Card.Content>
+        </Card>
+    </Card.Group>
+        ) : (
+        <Card.Group>
+            <Card>
+                <Card.Content>
+                    <Image floated='left' size='small' src={event.image_url} />
+                    <Card.Header>{event.title}</Card.Header>
+                    <Card.Description><b>Description:</b> {event.description}</Card.Description>
+                    <Card.Description><b>Location:</b> {event.location}</Card.Description>
+                    <Card.Description><b>Date:</b> {event.date}</Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <Button.Group >
+                        <Button onClick={() => setIsEdit(true)} color='violet'>Edit Event</Button>
+                        <Button.Or />
+                        <Button onClick={handleDeleteClick} color='black'>Delete Event</Button>
+                    </Button.Group>
+                    
+                </Card.Content>
+            </Card>
+        </Card.Group>
+        )}
         <Divider hidden />
       </Grid.Column>  
     )

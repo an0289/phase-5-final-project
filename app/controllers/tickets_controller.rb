@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
 
     def create 
         ticket = @current_user.tickets.create!(ticket_params)
-        # ticket.event.available_seats -1
+        # ticket.event.available_seats.to_i -1
         render json: ticket, status: :created 
     end 
 

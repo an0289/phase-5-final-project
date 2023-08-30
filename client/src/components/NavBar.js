@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, Header, Input, Divider, Search, Container, Grid } from 'semantic-ui-react'
+import { Menu, Header, Icon, Segment, Sidebar } from 'semantic-ui-react'
 import { UserContext } from '../contexts/UserContext'
 import { AttendeeContext } from '../contexts/AttendeeContext'
 import { OrganizerContext } from '../contexts/OrganizerContext'
@@ -25,17 +25,17 @@ function NavBar() {
     return (
         <div>
             {(type === 'Organizer') ? (
-            <Menu tabular vertical floated size='massive' style={{ paddingLeft:15, fontFamily: 'Metal Mania' }}>
+            <Menu inverted vertical floated size='massive' style={{ fontFamily: 'Metal Mania' }}>
                <Menu.Item as={NavLink} to='/' name='home' />
                <Menu.Item as={NavLink} to="/my_events" name='My Events' />
                <Menu.Item as={NavLink} to='/new' name='Create A New Event' />
-               <Menu.Item as={NavLink} onClick={handleLogoutClick} name='logout' />
+               <Menu.Item onClick={handleLogoutClick} name='logout' />
             </Menu> 
             ) : (
-            <Menu tabular vertical floated size='massive' style={{ paddingLeft:15, fontFamily: 'Metal Mania' }}>
+            <Menu inverted vertical floated size='massive' style={{ fontFamily: 'Metal Mania' }}>
                 <Menu.Item as={NavLink} to='/' name='home' />
                 <Menu.Item as={NavLink} to='/my_tickets' name='Purchased Tickets' />
-                <Menu.Item as={NavLink} onClick={handleLogoutClick} name='logout' />
+                <Menu.Item onClick={handleLogoutClick} name='logout' />
             </Menu>
             )}
         </div>

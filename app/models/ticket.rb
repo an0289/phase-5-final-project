@@ -2,6 +2,8 @@ class Ticket < ApplicationRecord
   belongs_to :attendee, foreign_key: "user_id"
   belongs_to :event
 
+  validates :user_id, uniqueness: { scope: :event_id, message: 'already attending this event'}
+
   def event_title
     self.event.title
   end 
