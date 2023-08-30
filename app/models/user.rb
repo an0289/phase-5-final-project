@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_secure_password 
 
     validates :type, inclusion: { in: %w[Organizer Attendee], message: "must be either Organizer or Attendee"}
+    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
     # has_many :events 
     # has_many :tickets

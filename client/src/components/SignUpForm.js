@@ -99,7 +99,8 @@ function SignUpForm() {
                            <input 
                            type='radio'
                            name='type'
-                           value={type === 'Organizer'}
+                           value='Organizer'
+                           checked={type === 'Organizer'}
                            onChange={(e) => setType(e.target.value)}
                            />
                         <label>Organizer</label>
@@ -108,7 +109,8 @@ function SignUpForm() {
                            <input 
                            type='radio'
                            name='type'
-                           value={type === 'Attendee'}
+                           value='Attendee'
+                           checked={type === 'Attendee'}
                            onChange={(e) => setType(e.target.value)}
                            />
                         <label>Attendee</label>

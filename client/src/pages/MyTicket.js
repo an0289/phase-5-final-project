@@ -33,9 +33,8 @@ function MyTicket({ id, ticket }) {
                 console.log('deleted')
             }
         })
-        console.log('really deleted')
     }
-    console.log('really, really deleted')
+    console.log('really deleted')
     return (
         <   Grid.Column >
             <Card.Group>
