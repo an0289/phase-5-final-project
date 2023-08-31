@@ -19,7 +19,7 @@ root.render(
     <AttendeeProvider>
     <EventProvider>
     <TicketProvider>
-      <App />
+      <App style={{ backgroundColor: 'black' }}/>
     </TicketProvider>
     </EventProvider>
     </AttendeeProvider>

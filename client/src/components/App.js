@@ -24,7 +24,7 @@ function App() {
         Eventful Encounters  
       </Header>
       <Header textAlign='right' as='h3' style={{ paddingRight:25, fontFamily: 'fleshandblood', color:'white' }}>
-        <Image circular src={user.image_url} bordered/>
+        <Image  src={user.image_url} avatar/>
         <i>Welcome, {user.name}. Enlightenment is within reach!</i>
       </Header>
       <Divider hidden />

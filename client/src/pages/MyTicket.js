@@ -41,7 +41,7 @@ function MyTicket({ id, ticket }) {
     return (
         <   Grid.Column >
             <Card.Group>
-                <Card>
+                <Card color='red'>
                     <Card.Content>
                         <Image floated='right' size='tiny' src={ticket.event_image} />
                         <Card.Header as='a'>{ticket.event_title}</Card.Header>
