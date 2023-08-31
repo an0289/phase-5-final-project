@@ -26,6 +26,7 @@ function Event({ eventId, event }) {
             return event 
         })
         setEvents(updatedEvents)
+        console.log(newTicket)
     }
 
     function handleSubmit(e) {

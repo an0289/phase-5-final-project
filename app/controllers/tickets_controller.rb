@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
     def destroy
         ticket = find_ticket
         ticket.destroy
-        head :no_content 
+        render json: ticket  
     end 
 
     private 

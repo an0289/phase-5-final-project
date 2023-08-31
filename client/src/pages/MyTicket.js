@@ -22,14 +22,18 @@ function MyTicket({ id, ticket }) {
                 return event 
         })
         setEvents(updatedEvents)
+
+        // const updatedTickets = tickets.filter((ticket) => ticket.id !== deletedTicket.id)
+        // setTickets(updatedTickets)
+        console.log(deletedTicket)
     }
 
-    function handleDeleteClick(deletedTicket) {
+    function handleDeleteClick() {
         fetch(`/tickets/${id}`, {
             method: "DELETE"
         }).then((r) => {
             if (r.ok) {
-                handleDeleteTicket(deletedTicket)
+                r.json().then((deletedTicket) => handleDeleteTicket(deletedTicket))
                 console.log('deleted')
             }
         })
