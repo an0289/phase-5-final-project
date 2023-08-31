@@ -140,7 +140,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                     <Card.Description><b>Date:</b> {event.date}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                        <Button onClick={() => setIsEdit(true)} basic color='black'>Edit Event</Button>
+                        <Button onClick={() => setIsEdit(true)}  basic color='black'>Edit Event</Button>
                         <Button floated='right' onClick={handleDeleteClick} basic color='red'>Delete Event</Button>
                     
                 </Card.Content>
