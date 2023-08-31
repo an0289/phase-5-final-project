@@ -2,7 +2,7 @@ class Ticket < ApplicationRecord
   belongs_to :attendee, foreign_key: "user_id"
   belongs_to :event
 
-  # validates :user_id, uniqueness: { scope: :event_id, message: 'already attending this event'}
+  validates :user_id, uniqueness: { scope: :event_id, message: 'already attending this event'}
   validate :date_must_be_in_the_future
 
 
@@ -33,6 +33,6 @@ class Ticket < ApplicationRecord
   private
 
   def date_must_be_in_the_future
-    errors.add(:event_date, "has already passed!") unless date.future?
+    errors.add(:event_date, "has already passed!") unless event_date.future?
   end 
 end

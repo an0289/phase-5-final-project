@@ -24,12 +24,12 @@ function MyTicket({ id, ticket }) {
         setEvents(updatedEvents)
     }
 
-    function handleDeleteClick() {
+    function handleDeleteClick(deletedTicket) {
         fetch(`/tickets/${id}`, {
             method: "DELETE"
         }).then((r) => {
             if (r.ok) {
-                r.json().then((deletedTicket) => handleDeleteTicket(deletedTicket))
+                handleDeleteTicket(deletedTicket)
                 console.log('deleted')
             }
         })

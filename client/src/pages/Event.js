@@ -33,10 +33,10 @@ function Event({ eventId, event }) {
         fetch("/tickets", {
             method: "POST", 
             headers: {
-                "Context-Type": "application/json", 
+                "Content-Type": "application/json", 
             },
             body: JSON.stringify({
-                event_id: event.id
+                event_id: eventId
             }),
         }).then((r) => {
             if (r.ok) {
