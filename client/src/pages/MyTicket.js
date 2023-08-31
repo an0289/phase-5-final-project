@@ -34,11 +34,10 @@ function MyTicket({ id, ticket }) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((deletedTicket) => handleDeleteTicket(deletedTicket))
-                console.log('deleted')
             }
         })
     }
-    console.log('really deleted')
+
     return (
         <   Grid.Column >
             <Card.Group>

@@ -26,8 +26,17 @@ class Ticket < ApplicationRecord
   def event_seats
     self.event.available_seats
   end 
+
   def event_organizer
     self.event.organizer_name
+  end 
+
+  def event_description
+    self.event.description
+  end 
+
+  def user_email
+    self.attendee.email
   end 
 
   private

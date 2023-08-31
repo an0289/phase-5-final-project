@@ -9,8 +9,9 @@ class TicketsController < ApplicationController
     end 
 
     def create
-        ticket = @current_user.tickets.create!(ticket_params)
-        render json: ticket, status: :created 
+        @ticket = @current_user.tickets.create!(ticket_params)
+        TicketConfirmationMailer.with(ticket: @ticket).ticket_purchased_email.deliver_later
+        render json: @ticket, status: :created 
     end 
 
     def destroy
