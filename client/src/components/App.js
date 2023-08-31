@@ -20,7 +20,7 @@ function App() {
     <>
     <Segment>
       <Divider hidden />
-      <Header style={{ paddingRight:25, fontFamily: 'Metal Mania', fontSize: '44px' }} textAlign='right'>
+      <Header style={{ paddingRight:25, fontFamily: 'fleshandblood', fontSize: '44px' }} textAlign='right'>
         Eventful Encounters  
       </Header>
       <Divider hidden />
