@@ -8,6 +8,7 @@ import MyEventList from '../pages/MyEventList'
 import MyTicketList from '../pages/MyTicketList'
 import NewEvent from '../pages/NewEvent'
 import { Segment, Header, Divider, Image, Container, Grid } from 'semantic-ui-react'
+import Background from '../assets/bloodborne_banner.png'
 
 
 function App() {
@@ -18,15 +19,19 @@ function App() {
 
   return (
     <>
-    <Segment>
-      <Divider hidden />
-      <Header style={{ paddingRight:25, fontFamily: 'fleshandblood', fontSize: '44px' }} textAlign='right'>
+    <Container fluid style={{ backgroundImage: `url(${Background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+      <Header style={{ paddingRight:25, paddingTop:25, fontFamily: 'fleshandblood', color: 'white', fontSize: '44px' }} textAlign='right'>
         Eventful Encounters  
       </Header>
+      <Header textAlign='right' as='h3' style={{ paddingRight:25, fontFamily: 'fleshandblood', color:'white' }}>
+        <Image circular src={user.image_url} bordered/>
+        <i>Welcome, {user.name}. Enlightenment is within reach!</i>
+      </Header>
       <Divider hidden />
-    </Segment>
-    <Divider hidden />
+      <Divider hidden />
+      <Divider hidden />
     <NavBar  />
+    </Container>
         <main>
           <Routes>
             <Route path="/new"

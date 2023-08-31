@@ -31,7 +31,7 @@ function LoginForm() {
         <Container style={{ paddingLeft:80}}>
         <Segment style={{ height:250, width:500}} raised>
             <Form onSubmit={handleSubmit}>
-                <Header style={{ fontFamily: 'Metal Mania' }} textAlign='center' as='h3'>Login Page</Header>
+                <Header style={{ fontFamily: 'fleshandblood' }} textAlign='center' as='h3'>Login Page</Header>
                     <Form.Field>
                         <label>Email</label>
                         <input 

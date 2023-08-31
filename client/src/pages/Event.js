@@ -55,7 +55,7 @@ function Event({ eventId, event }) {
         {(type === 'Attendee') ? (
         <Grid.Column stretched>
         <Image src={event.image_url} />
-           <Card raised fluid color='black'>
+           <Card raised fluid color='red'>
                <Card.Content>
                    <Card.Header>
                        {event.title}
@@ -67,7 +67,7 @@ function Event({ eventId, event }) {
                <Card.Content extra>
                    <Form onSubmit={handleSubmit}>
                         <Form.Field>
-                            <Button basic color='violet'>Purchase Ticket</Button>
+                            <Button basic color='orange'>Purchase Ticket</Button>
                         </Form.Field>
                         <Form.Field>
                             {errors.map((err) => (

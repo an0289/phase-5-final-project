@@ -13,13 +13,13 @@ function Login() {
             {showLogin ? (
             <>
             <Segment  color='black' style={{ height:520, width:700 }}raised>
-            <Header style={{ fontFamily: 'Metal Mania' }} size='huge' textAlign='center'>
+            <Header style={{ fontFamily: 'fleshandblood' }} size='huge' textAlign='center'>
                 Eventful Encounters 
                 </Header>
                 <LoginForm />
                 <Divider hidden />
                 <Container fluid text>
-                <Header as='h3' style={{ fontFamily: 'Metal Mania' }} textAlign='center'> 
+                <Header as='h3' style={{ fontFamily: 'fleshandblood' }} textAlign='center'> 
                 Don't have an account?
                 </Header>
                 <Button basic color='black' attached='bottom' onClick={() => setShowLogin(false)}>Sign Up</Button>
@@ -29,13 +29,13 @@ function Login() {
             ) : (
             <>
             <Segment  color='black' style={{ height:700, width:700 }}raised>
-            <Header style={{ fontFamily: 'Metal Mania' }} size='huge' textAlign='center'>
+            <Header style={{ fontFamily: 'fleshandblood' }} size='huge' textAlign='center'>
                 Eventful Encounters 
                 </Header>
                 <SignUpForm />
                 <Divider hidden />
                 <Container fluid text>
-                <Header as='h3' style={{ fontFamily: 'Metal Mania' }} textAlign='center'>
+                <Header as='h3' style={{ fontFamily: 'fleshandblood' }} textAlign='center'>
                     Already have an account?
                 </Header>
                 <Button basic color='black' attached='bottom' onClick={() => setShowLogin(true)}>Sign In</Button>

@@ -42,7 +42,7 @@ function SignUpForm() {
         <Container style={{ paddingLeft:80}}>
         <Segment style={{ height:510, width:500}} raised>
             <Form onSubmit={handleSubmit}>
-            <Header style={{ fontFamily: 'Metal Mania' }} textAlign='center' as='h3'>Sign Up Page</Header>
+            <Header style={{ fontFamily: 'fleshandblood' }} textAlign='center' as='h3'>Sign Up Page</Header>
                     <Form.Field>
                         <label>Email</label>
                         <input 

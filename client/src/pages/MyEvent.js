@@ -73,7 +73,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
       <Grid.Column>
         {isEdit ? (
         <Card.Group>
-        <Card>
+        <Card color='red'>
             <Card.Content>
                 <Image floated='left' size='small' src={event.image_url} />
                 <Form onSubmit={handleSubmit}>
@@ -120,7 +120,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                 </Form.Field>
                 <Form.Field>
                 <Button.Group >
-                    <Button type='submit' color='violet'>Submit Edit</Button>
+                    <Button type='submit' color='black'>Submit Edit</Button>
                     <Button.Or />
                     <Button onClick={() => setIsEdit(false)} color='black'>Cancel Edit</Button>
                 </Button.Group>
@@ -131,7 +131,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
     </Card.Group>
         ) : (
         <Card.Group>
-            <Card>
+            <Card color='red'>
                 <Card.Content>
                     <Image floated='left' size='small' src={event.image_url} />
                     <Card.Header>{event.title}</Card.Header>
@@ -140,11 +140,8 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                     <Card.Description><b>Date:</b> {event.date}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button.Group >
-                        <Button onClick={() => setIsEdit(true)} color='violet'>Edit Event</Button>
-                        <Button.Or />
-                        <Button onClick={handleDeleteClick} color='black'>Delete Event</Button>
-                    </Button.Group>
+                        <Button onClick={() => setIsEdit(true)} basic color='black'>Edit Event</Button>
+                        <Button floated='right' onClick={handleDeleteClick} basic color='red'>Delete Event</Button>
                     
                 </Card.Content>
             </Card>
