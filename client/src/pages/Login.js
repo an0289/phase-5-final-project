@@ -32,17 +32,20 @@ function Login() {
             </>
             ) : (
             <>
-            <Segment  color='black' style={{ height:700, width:700 }}raised>
+            <Segment  inverted color='black' style={{ height:670, width:700 }}raised>
+            <Divider hidden />
             <Header style={{ fontFamily: 'fleshandblood' }} size='huge' textAlign='center'>
                 Eventful Encounters 
                 </Header>
                 <SignUpForm />
-                <Divider hidden />
                 <Container fluid text>
-                <Header as='h3' style={{ fontFamily: 'fleshandblood' }} textAlign='center'>
+                <Header as='h3' style={{ fontFamily: 'fleshandblood', color:'white' }} textAlign='center'>
+                <Image size='massive' src='../images/amygdala_sprite.png' />
                     Already have an account?
                 </Header>
-                <Button basic color='black' attached='bottom' onClick={() => setShowLogin(true)}>Sign In</Button>
+                <div style={{ paddingLeft:320}}>
+                <Button inverted basic color='orange' onClick={() => setShowLogin(true)}>Sign In</Button>
+                </div>
                 </Container>
             </Segment>
             </>

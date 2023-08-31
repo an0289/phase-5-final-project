@@ -9,7 +9,6 @@ function SignUpForm() {
     const [type, setType] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
     const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
@@ -26,7 +25,6 @@ function SignUpForm() {
                 type, 
                 password,
                 password_confirmation: passwordConfirmation, 
-                image_url: imageUrl
             }),
         }).then((r) => {
             if (r.ok) {
@@ -40,9 +38,9 @@ function SignUpForm() {
     return (
         <>
         <Container style={{ paddingLeft:80}}>
-        <Segment style={{ height:510, width:500}} raised>
-            <Form onSubmit={handleSubmit}>
-            <Header style={{ fontFamily: 'fleshandblood' }} textAlign='center' as='h3'>Sign Up Page</Header>
+        <Segment inverted style={{ height:450, width:500}} raised>
+            <Form inverted onSubmit={handleSubmit}>
+            <Header style={{ fontFamily: 'fleshandblood', color:'white' }} textAlign='center' as='h3'>Sign Up Page</Header>
                     <Form.Field>
                         <label>Email</label>
                         <input 
@@ -83,16 +81,6 @@ function SignUpForm() {
                         onChange={(e) => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Field>
-                    <Form.Field>
-                    <label>Avatar</label>
-                        <input 
-                        type='text'
-                        name='imageUrl'
-                        value={imageUrl}
-                        placeholder='Avatar'
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        />
-                    </Form.Field>
                     <Form.Group inline>
                     <label>Type: </label>
                         <Form.Field>
@@ -121,7 +109,7 @@ function SignUpForm() {
                             <Label key={err}>{err}</Label>
                         ))}
                     </Form.Field>
-                <Button floated='right' basic color='black' type='submit'>Sign Up</Button>
+                <Button floated='right' basic inverted color='orange' type='submit'>Sign Up</Button>
             </Form>
         </Segment>
         </Container>
