@@ -39,7 +39,7 @@ Login or Signup to view the events
 
 ![Signup](/eventful_encounters_signup.png)
 
-# Organizers
+### Organizers
 
 Organizers can create, edit, and delete events 
 
@@ -47,7 +47,7 @@ Organizers can create, edit, and delete events
 
 ![EditDeleteEvent](/eventful_encounters_edit_delete.png)
 
-# Attendees 
+### Attendees 
 
 Attendees can purchase and cancel tickets to events 
 
