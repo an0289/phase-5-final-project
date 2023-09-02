@@ -4,11 +4,11 @@
 
 Eventful Encounters is an Event creation and signup website specializing in cosmic events found in FromSoftware's Bloodborne. Upon signup, users will declare if they 'Organizers' or 'Attendees' and this will dictate how they interact with the website. Logged in Organizers are able to create, edit, and delete events. Logged in Attendees are to view all events, purchase tickets to events, and cancel any tickets they've purchased.  
 
-All users will receive an email upon signup and Attendees, upon purchase of a ticket, will receive an email confirming the purchase providing the event details. 
+All users will receive an email upon signup, and Attendees, upon purchase of a ticket, will receive an email confirming the purchase providing the event details. 
 
 ## Programming Languages 
 
-This app was created using React.js for the frontend and Ruby on Rails for the backend, and sqlite3 is used to manage the database  
+This app was created using React.js for the frontend and Ruby on Rails for the backend (as well as the email function through Rails' Action Mailer), and sqlite3 is used to manage the database  
 
 ## Installation
 
