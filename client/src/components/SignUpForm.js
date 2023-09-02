@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { Container, Button, Form, Segment, Divider, Label, Header, Radio } from 'semantic-ui-react'
 import { UserContext } from '../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
+
 
 function SignUpForm() {
     const {setUser} = useContext(UserContext)
@@ -10,6 +12,7 @@ function SignUpForm() {
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -29,6 +32,7 @@ function SignUpForm() {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
+                navigate("/")
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }

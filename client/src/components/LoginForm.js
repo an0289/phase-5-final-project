@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { Container, Button, Form, Segment, Divider, Label, Header } from 'semantic-ui-react'
 import { UserContext } from '../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 function LoginForm() {
     const {setUser} = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([])
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -19,6 +21,7 @@ function LoginForm() {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
+                navigate("/")
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }
