@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_many :tickets, dependent: :destroy
   has_many :attendees, through: :tickets  
   
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true 
   validates :description, presence: true 
   validates :location, presence: true 
   validates :image_url, presence: true 

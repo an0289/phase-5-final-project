@@ -34,8 +34,7 @@ function SignUpForm() {
                 r.json().then((user) => setUser(user))
                 navigate("/")
             } else {
-                r.json().then((err) => setErrors(err.errors))
-            }
+                r.json().then((err) => setErrors(err.errors))            }
         })
     }
 
@@ -108,7 +107,7 @@ function SignUpForm() {
                         <label>Attendee</label>
                         </Form.Field>
                         </Form.Group>
-                    <Form.Field>
+                        <Form.Field>
                         {errors.map((err) => (
                             <Label key={err}>{err}</Label>
                         ))}

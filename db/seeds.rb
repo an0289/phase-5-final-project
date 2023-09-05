@@ -18,8 +18,8 @@ User.create!(email: 'alexandraneff@live.com' , password: 'cool123' , image_url: 
 
 Event.create!(title: 'Amygdala' , description: "The Amygdala shall grant us entry to the Hunter's Nightmare" , location: 'Cathedral Ward' , image_url: "../images/lesser-amygdala.jpg", date: '2023-09-10', available_seats: 20 , user_id: 1 )
 Event.create!(title: 'Rom, The Vacuous Spider' , description: "Rom shall demonstrate how she has learned to gain audience with the Great Ones" , location: 'Moonside Lake in Brygenwerth' , image_url: "../images/romlake.jpg" , date: '2023-09-12' , available_seats: 20 , user_id: 1 )
-Event.create!(title: 'Brain of Mensis' , description: "The Brain of Mensis shall be hoisted to Their permanent resting place" , location: 'School of Mensis' , image_url: "../images/bmensis.jpg" , date: '2023-09-02', available_seats: 20 , user_id: 1 )
-Event.create!(title: 'Ebrietas, Daughter of the Cosmos' , description: "Join us as we bear witness to The One left behind" , location: 'Altar of Despair in the Grand Cathedral' , image_url: "../images/Bloodborne-ebrietas.png" , date: '2023-09-03' , available_seats: 20 , user_id: 1 )
+Event.create!(title: 'Brain of Mensis' , description: "The Brain of Mensis shall be hoisted to Their permanent resting place" , location: 'School of Mensis' , image_url: "../images/bmensis.jpg" , date: '2023-09-13', available_seats: 20 , user_id: 1 )
+Event.create!(title: 'Ebrietas, Daughter of the Cosmos' , description: "Join us as we bear witness to The One left behind" , location: 'Altar of Despair in the Grand Cathedral' , image_url: "../images/Bloodborne-ebrietas.png" , date: '2023-09-12' , available_seats: 20 , user_id: 1 )
 
 Ticket.create!(id: 1 , user_id: 2 , event_id: 1 )
 Ticket.create!(id: 2 , user_id: 2 , event_id: 2 )
