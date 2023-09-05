@@ -16,7 +16,6 @@ function SignUpForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        setErrors([])
         fetch("/signup", {
             method: "POST",
             headers: {
@@ -27,14 +26,16 @@ function SignUpForm() {
                 name, 
                 type, 
                 password,
-                password_confirmation: passwordConfirmation, 
+                password_confirmation: passwordConfirmation 
             }),
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
                 navigate("/")
             } else {
-                r.json().then((err) => setErrors(err.errors))            }
+                r.json().then((err) => setErrors(err.errors))
+                
+            }
         })
     }
 
@@ -108,10 +109,10 @@ function SignUpForm() {
                         </Form.Field>
                         </Form.Group>
                         <Form.Field>
-                        {errors.map((err) => (
-                            <Label key={err}>{err}</Label>
-                        ))}
-                    </Form.Field>
+                            {errors.map((err) => (
+                                <Label key={err}>{err}</Label>
+                            ))}
+                       </Form.Field>
                 <Button floated='right' basic inverted color='orange' type='submit'>Sign Up</Button>
             </Form>
         </Segment>

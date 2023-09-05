@@ -15,15 +15,11 @@ const root = createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
     <UserProvider>
-    <OrganizerProvider>
-    <AttendeeProvider>
     <EventProvider>
     <TicketProvider>
       <App style={{ backgroundColor: 'black' }}/>
     </TicketProvider>
     </EventProvider>
-    </AttendeeProvider>
-    </OrganizerProvider>
     </UserProvider>
   </BrowserRouter>
 )
