@@ -29,7 +29,6 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
 
     function handleSubmit(e) {
         e.preventDefault()
-        setIsEdit(false)
         fetch(`/events/${id}`, {
             method: "PATCH", 
             headers: {
