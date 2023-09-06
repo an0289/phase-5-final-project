@@ -10,7 +10,7 @@ function NewEvent() {
              The Great Ones Are Among Us 
         </Header>
         <Container style={{ paddingLeft:260 }}>
-            <Segment   inverted style={{ height:670, width:700 }}raised>
+            <Segment   inverted style={{ height:730, width:700 }}raised>
             <Divider hidden />
             <Header style={{ fontFamily: 'fleshandblood' }} size='huge' textAlign='center'>
                 Submit A Cosmic Event 
