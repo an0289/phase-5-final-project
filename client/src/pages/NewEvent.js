@@ -6,8 +6,8 @@ function NewEvent() {
     
     return (
         <>
-        <Header style={{ paddingRight:280, paddingTop:50, fontFamily: 'fleshandblood', fontSize: '32px' }} textAlign='center' inverted>
-             The Great Ones Are Among Us 
+        <Header style={{ paddingRight:280, paddingTop:25, fontFamily: 'fleshandblood', fontSize: '32px' }} textAlign='center' inverted>
+             Look To The Stars...The Great Ones Are Among Us 
         </Header>
         <Container style={{ paddingLeft:260 }}>
             <Segment   inverted style={{ height:850, width:700 }}raised>
