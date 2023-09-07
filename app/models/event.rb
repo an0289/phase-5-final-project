@@ -9,9 +9,14 @@ class Event < ApplicationRecord
   validates :image_url, presence: true 
   validates :date, presence: true
   validate :date_must_be_in_the_future, on: :create
+  validates :available_seats, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   def organizer_name
     self.organizer.name
+  end 
+
+  def seats
+    (self.available_seats - self.tickets.length)
   end 
 
   private 

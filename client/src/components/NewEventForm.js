@@ -12,6 +12,7 @@ function NewEventForm() {
     const [location, setLocation] = useState("")
     const [date, setDate] = useState("")
     const [imageUrl, setImageUrl] = useState("")
+    const [availableSeats, setAvailableSeats] = useState(0)
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
@@ -36,6 +37,7 @@ function NewEventForm() {
                 location,
                 date,
                 image_url: imageUrl,
+                available_seats: Number(availableSeats),
                 user_id: user.id 
             }),
         }).then((r) => {
@@ -102,6 +104,16 @@ function NewEventForm() {
                 value={location}
                 placeholder='location'
                 onChange={(e) => setLocation(e.target.value)}
+                />
+                </Form.Field>
+                <Form.Field>
+                <label>Number of Available Seats</label>
+                <input 
+                type='text'
+                name='available_seats'
+                value={availableSeats}
+                placeholder='Number of Seats'
+                onChange={(e) => setAvailableSeats(e.target.value)}
                 />
                 </Form.Field>
                 <Form.Field>

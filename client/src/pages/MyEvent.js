@@ -11,6 +11,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
     const [description, setDescription] = useState(originalDescription)
     const [date, setDate] = useState(originalDate)
     const [location, setLocation] = useState(originalLocation)
+    const [availableSeats, setAvailableSeats] = useState(originalSeats)
     const [errors, setErrors] = useState([])
 
     function handleUpdateEvent(updatedEvent) {
@@ -38,11 +39,13 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                 title, 
                 description, 
                 date,
-                location
+                location, 
+                available_seats: Number(availableSeats)
             })
         }).then((r) => {
             if (r.ok) {
                 r.json().then((updatedEvent) => handleUpdateEvent(updatedEvent))
+                setIsEdit(false)
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }
@@ -113,16 +116,22 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                     />
                 </Form.Field>
                 <Form.Field>
+                    <label>Available Seats</label>
+                    <input
+                    type='text'
+                    name='available_seats'
+                    value={availableSeats}
+                    onChange={(e) => setAvailableSeats(e.target.value)}
+                    />
+                </Form.Field>
+                <Form.Field>
                     {errors.map((err) => (
                         <Label key={err}>{err}</Label>
                     ))}
                 </Form.Field>
                 <Form.Field>
-                <Button.Group >
-                    <Button type='submit' color='black'>Submit Edit</Button>
-                    <Button.Or />
+                    <Button type='submit' basic color='orange'>Submit Edit</Button>
                     <Button onClick={() => setIsEdit(false)} color='black'>Cancel Edit</Button>
-                </Button.Group>
                 </Form.Field>
             </Form>    
             </Card.Content>
@@ -137,6 +146,7 @@ function MyEvent({ event, id, originalTitle, originalDescription, originalLocati
                     <Card.Description><b>Description:</b> {event.description}</Card.Description>
                     <Card.Description><b>Location:</b> {event.location}</Card.Description>
                     <Card.Description><b>Date:</b> {event.date}</Card.Description>
+                    <Card.Description><b>Available Seats:</b> {event.available_seats}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                         <Button onClick={() => setIsEdit(true)}  basic color='black'>Edit Event</Button>

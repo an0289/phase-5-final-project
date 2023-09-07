@@ -4,6 +4,7 @@ import { UserContext } from '../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Image, Divider, Segment, Button, Card, Form, Label } from 'semantic-ui-react'
 
+
 function Event({ eventId, event }) {
     const {events, setEvents} = useContext(EventContext)
     const {user, setUser} = useContext(UserContext)
@@ -63,18 +64,23 @@ function Event({ eventId, event }) {
                    <Card.Description><b>Location:</b> {event.location}</Card.Description>
                    <Card.Description><b>Date:</b> {event.date}</Card.Description>
                    <Card.Description><b>Description:</b> {event.description}</Card.Description>
+                   <Card.Description><b>Available Seats:</b> {event.seats}</Card.Description>
                </Card.Content>
                <Card.Content extra>
-                   <Form onSubmit={handleSubmit}>
-                        <Form.Field>
-                            <Button basic color='orange'>Purchase Ticket</Button>
-                        </Form.Field>
-                        <Form.Field>
-                            {errors.map((err) => (
-                                <Label key={err}>{err}</Label>
-                            ))}
-                        </Form.Field>
-                   </Form>
+                {(event.seats === 0) ? (
+                    <Label size='huge' attached='bottom' color='red'>Sold Out</Label>
+                ) : (
+                    <Form onSubmit={handleSubmit}>
+                    <Form.Field>
+                        <Button basic color='orange'>Purchase Ticket</Button>
+                    </Form.Field>
+                    <Form.Field>
+                        {errors.map((err) => (
+                            <Label key={err}>{err}</Label>
+                        ))}
+                    </Form.Field>
+               </Form>
+                )}   
                </Card.Content>
            </Card>   
         <Divider hidden />
@@ -90,6 +96,7 @@ function Event({ eventId, event }) {
                        <Card.Description><b>Location:</b> {event.location}</Card.Description>
                        <Card.Description><b>Date:</b> {event.date}</Card.Description>
                        <Card.Description><b>Description:</b> {event.description}</Card.Description>
+                       <Card.Description><b>Available Seats:</b> {event.seats}</Card.Description>
                    </Card.Content>
                  </Card>   
         <Divider hidden />
