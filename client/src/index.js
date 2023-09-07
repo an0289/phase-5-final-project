@@ -17,7 +17,7 @@ root.render(
     <UserProvider>
     <EventProvider>
     <TicketProvider>
-      <App style={{ backgroundColor: 'black' }}/>
+      <App />
     </TicketProvider>
     </EventProvider>
     </UserProvider>

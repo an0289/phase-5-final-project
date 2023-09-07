@@ -18,7 +18,7 @@ function App() {
   
 
   return (
-    <>
+    <div style={{ background: 'black' }}>
     <Container fluid style={{ backgroundImage: `url(${Background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
       <Header style={{ paddingRight:25, paddingTop:25, fontFamily: 'fleshandblood', color: 'white', fontSize: '44px' }} textAlign='right'>
         Eventful Encounters  
@@ -47,7 +47,7 @@ function App() {
             />
           </Routes>
         </main>        
-    </>
+    </div>
   )
 
 }
